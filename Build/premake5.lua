@@ -10,12 +10,13 @@ workspace "HelloWorld"                   -- Solution Name
   configurations { "Debug", "Release" }  -- Optimization/General config mode in VS
   platforms      { "x64", "x32" }        -- Dropdown platforms section in VS
 
-  -- _ACTION is the argument passed into premake5 when you run it.
-  local project_action = (_ACTION and _ACTION or "UNDEFINED")
+  -- _ACTION is the argument you passed into premake5 when you ran it.
+  local project_action = "UNDEFINED"
+  if _ACTION ~= nill then project_action = _ACTION end
+
 
   -- Where the project files (vs project, solution, etc) go
   location( ROOT .. "project_" .. project_action)
-
 
   -------------------------------
   -- [ COMPILER/LINKER CONFIG] --
